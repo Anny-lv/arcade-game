@@ -1,9 +1,10 @@
 //Starting level and lives
-var level = 1;
-var lives = 3;
+let level = 1;
+let lives = 3;
+
 
 /// Enemy Class ///
-var Enemy = function(x,y,speed) {
+let Enemy = function(x,y,speed) {
     this.sprite = 'images/enemy-bug.png';
     this.x = x;
     this.y = y;
@@ -45,7 +46,7 @@ Enemy.prototype.render = function() {
 
 
 /// Player Class///
-var Player = function(x,y){
+let Player = function(x,y){
     this.sprite =  'images/char-pink-girl.png';
     this.x = x;
     this.y = y;
@@ -83,9 +84,9 @@ Player.prototype.handleInput = function(keyPress){
 
 
 // All enemies are placed in an array
-var allEnemies = [];
+let allEnemies = [];
 
-var enemyLocation = [63, 147, 230];
+let enemyLocation = [63, 147, 230];
 
 enemyLocation.forEach(function (Y) {
     enemy = new Enemy(0, Y, 200);
@@ -93,7 +94,7 @@ enemyLocation.forEach(function (Y) {
 });
 
 //Starting location of the player
-var player = new Player(202, 405);
+let player = new Player(202, 405);
 
 //When all the lives are lost >>
 function gameOver() {
@@ -120,7 +121,7 @@ span.onclick = function() {
 // Player.handleInput() method. 
 
 document.addEventListener('keyup', function(e) {
-    var allowedKeys = {
+    const allowedKeys = {
         37: 'left',
         38: 'up',
         39: 'right',
