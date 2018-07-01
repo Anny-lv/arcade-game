@@ -1,7 +1,7 @@
 //Starting level and lives
 let level = 1;
 let lives = 3;
-
+let winner = false;
 
 /// Enemy Class ///
 let Enemy = function(x,y,speed) {
@@ -35,7 +35,14 @@ Enemy.prototype.update = function(dt) {
 
     //Game over message
     if (lives === 0) {
-         gameOver()
+        winner = false;
+        gameOver(winner)
+    };
+
+    //Game won
+        if (level === 10) {
+        winner = true;
+        gameOver(winner)
     };
 };
 
@@ -97,9 +104,15 @@ enemyLocation.forEach(function (Y) {
 let player = new Player(202, 405);
 
 //When all the lives are lost >>
-function gameOver() {
+function gameOver(status) {
     modal.style.display = "block";
     document.getElementById("playerlevel").innerHTML= level;
+    if (status == true) {
+    document.getElementById("statusmsg").innerHTML= "Congratulations! You Won!";
+    }
+    else { 
+        document.getElementById("statusmsg").innerHTML= "Sooory! You lost.";
+    }
 }
 
 //Restart game
